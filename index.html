@@ -4,28 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анаграмма</title>
-    <!-- Добавляем ссылку на CSS файл -->
+    <!-- Подключаем внешний CSS файл -->
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h2>Введите анаграмму:</h2>
-    <form id="loginForm" onsubmit="checkPassword(); return false;">
-        <!-- Изменяем тип поля с password на text -->
-        <input type="text" id="password" placeholder="Введите анаграмму">
-        <button type="submit">Проверка</button>
-    </form>
-    
+    <h2>Решите анаграмму:</h2>
+    <div id="anagramContainer">
+        <p id="anagram"></p>
+    </div>
+    <input type="text" id="answer" placeholder="Введите ответ">
+    <button onclick="checkAnswer()">Проверить</button>
+    <button onclick="getNewAnagram()">Новая анаграмма</button>
     <p id="message"></p>
 
-    <script>
-        function checkPassword() {
-            var password = document.getElementById("password").value;
-            if (password === "Мамуся") {
-                document.getElementById("message").innerHTML = "Ввод выполнен успешно!";
-            } else {
-                document.getElementById("message").innerHTML = "Попробуйте еще раз.";
-            }
-        }
-    </script>
+    <!-- Подключаем внешний JavaScript файл -->
+    <script src="script.js"></script>
 </body>
 </html>

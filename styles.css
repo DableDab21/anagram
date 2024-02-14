@@ -1,30 +1,8 @@
-/* Стилизация заголовков */
-h1 {
-    color: blue; /* Цвет текста */
-    font-size: 24px; /* Размер шрифта */
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
 }
 
-/* Стилизация кнопок */
-button {
-    background-color: green; /* Цвет фона */
-    color: white; /* Цвет текста */
-    padding: 10px 20px; /* Внутренние отступы */
-    border: none; /* Удаление границы */
-    border-radius: 5px; /* Скругление углов */
-    cursor: pointer; /* Изменение курсора при наведении */
-}
-
-/* Стилизация текстовых полей */
-input[type="text"] {
-    width: 200px; /* Ширина поля ввода */
-    padding: 5px; /* Внутренние отступы */
-    border: 1px solid #ccc; /* Граница с цветом */
-    border-radius: 3px; /* Скругление углов */
-}
-
-/* Стилизация сообщений об ошибке */
-.error-message {
-    color: red; /* Цвет текста */
-    font-style: italic; /* Курсив */
-    margin-top: 5px; /* Внешний отступ сверху */
+#anagramContainer {
+    margin-bottom: 10px;
 }
