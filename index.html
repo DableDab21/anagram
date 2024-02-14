@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+</head>
+<body>
+    <h2>Введите анаграмму:</h2>
+    <form id="loginForm" onsubmit="checkPassword(); return false;">
+        <input type="password" id="password" placeholder="Введите пароль">
+        <button type="submit">Войти</button>
+    </form>
+    
+    <p id="message"></p>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "1212") {
+                document.getElementById("message").innerHTML = "Ввод выполнен успешно!";
+            } else {
+                document.getElementById("message").innerHTML = "Попробуйте еще раз.";
+            }
+        }
+    </script>
+</body>
+</html>
