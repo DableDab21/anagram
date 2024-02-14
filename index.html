@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анаграмма</title>
-    <!-- Подключаем внешний CSS файл -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Подключаем свои стили -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключаем шрифт -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css">
 </head>
 <body>
-    <h2>Решите анаграмму:</h2>
-    <div id="anagramContainer">
-        <p id="anagram"></p>
+    <div class="container">
+        <h2>Решите анаграмму:</h2>
+        <div id="anagramContainer">
+            <p id="anagram"></p>
+        </div>                
+        <input type="text" id="answer" placeholder="Введите ответ">
+        <button onclick="checkAnswer()">Проверить</button>
+        <button onclick="getNewAnagram()">Новая анаграмма</button>
+        <p id="message"></p>
     </div>
-    <input type="text" id="answer" placeholder="Введите ответ">
-    <button onclick="checkAnswer()">Проверить</button>
-    <button onclick="getNewAnagram()">Новая анаграмма</button>
-    <p id="message"></p>
 
-    <!-- Подключаем внешний JavaScript файл -->
+    <!-- Подключаем скрипты -->
     <script src="script.js"></script>
+
+    <script>
+        // Добавляем этот скрипт, чтобы отображать первую анаграмму при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCurrentAnagram();
+        });
+    </script>
 </body>
 </html>
