@@ -1,21 +1,18 @@
-var anagrams = ["КОТ", "ДОМ", "КИТ"]; // список анаграмм (используем большие буквы)
-var currentAnagramIndex = 0;
-var anagramLetters = document.querySelectorAll('.anagram-letter');
-var answerInput = document.getElementById("answer");
-var message = document.getElementById("message");
+const anagrams = ["КОТ", "ДОМ", "КИТ"];
+let currentAnagramIndex = 0;
+const anagramLetters = document.querySelectorAll('.anagram-letter');
+const answerInput = document.getElementById("answer");
+const message = document.getElementById("message");
 
-// Функция, которая перемешивает символы в строке
 function shuffleString(str) {
-    var shuffledStr = str.split('').sort(function(){return 0.5-Math.random()}).join('');
-    return shuffledStr;
+    return str.split('').sort(() => Math.random() - 0.5).join('');
 }
 
-// Функция, которая перемешивает буквы в слове, оставляя только те, которые есть в исходном слове
 function shuffleLettersInWord(word) {
-    var shuffledWord = '';
-    var originalLetters = word.split('');
-    var shuffledLetters = shuffleString(word).split('');
-    shuffledLetters.forEach(function(letter) {
+    const originalLetters = word.split('');
+    const shuffledLetters = shuffleString(word).split('');
+    let shuffledWord = '';
+    shuffledLetters.forEach(letter => {
         if (originalLetters.includes(letter)) {
             shuffledWord += letter;
             originalLetters.splice(originalLetters.indexOf(letter), 1);
@@ -25,29 +22,34 @@ function shuffleLettersInWord(word) {
 }
 
 function displayCurrentAnagram() {
-    var currentAnagram = shuffleLettersInWord(anagrams[currentAnagramIndex]); // перемешиваем буквы только из исходного слова
-    var correctAnagram = anagrams[currentAnagramIndex];
+    let currentAnagram = shuffleLettersInWord(anagrams[currentAnagramIndex]);
+    const correctAnagram = anagrams[currentAnagramIndex];
     
-    // Проверяем, совпадает ли первоначальная анаграмма с правильным ответом
     while (currentAnagram === correctAnagram) {
         currentAnagram = shuffleLettersInWord(anagrams[currentAnagramIndex]);
     }
     
-    for (var i = 0; i < currentAnagram.length; i++) {
-        // Устанавливаем изображение для каждой буквы анаграммы
-        anagramLetters[i].src = "img/" + currentAnagram[i] + ".png";
-    }
+    currentAnagram.split('').forEach((letter, index) => {
+        anagramLetters[index].src = `img/${letter}.png`;
+    });
 }
 
 function checkAnswer() {
-    var answer = answerInput.value.toUpperCase(); // приводим ответ пользователя к верхнему регистру
-    var currentAnagram = anagrams[currentAnagramIndex];
+    const answer = answerInput.value.toUpperCase();
+    const currentAnagram = anagrams[currentAnagramIndex];
+
+    if (!answer) {
+        message.textContent = "Введите ответ!";
+        return;
+    }
 
     if (answer === currentAnagram) {
-        message.textContent = "Правильно! Следующая анаграмма...";
-        currentAnagramIndex = (currentAnagramIndex + 1) % anagrams.length;
-        displayCurrentAnagram();
-        answerInput.value = "";
+        if ([...anagramLetters].every(letter => letter.complete)) {
+            message.textContent = "Правильно! Следующая анаграмма...";
+            currentAnagramIndex = (currentAnagramIndex + 1) % anagrams.length;
+            displayCurrentAnagram();
+            answerInput.value = "";
+        }
     } else {
         message.textContent = "Неправильный ответ. Попробуйте еще раз.";
     }
@@ -60,5 +62,4 @@ function getNewAnagram() {
     message.textContent = "";
 }
 
-// Отображаем первую анаграмму при загрузке страницы
 displayCurrentAnagram();

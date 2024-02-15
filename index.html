@@ -11,24 +11,31 @@
 </head>
 <body>
     <div class="container">
+        <!-- Заголовок -->
         <h2>Решите анаграмму:</h2>
+        <!-- Контейнер для изображений анаграммы -->
         <div id="anagramContainer">
             <!-- Изображения для каждой буквы анаграммы -->
-            <img src="images/k.png" class="anagram-letter" id="letter1">
-            <img src="images/o.png" class="anagram-letter" id="letter2">
-            <img src="images/t.png" class="anagram-letter" id="letter3">
+            <!-- Используйте data-* атрибуты для хранения информации о буквах -->
+            <img src="images/k.png" class="anagram-letter" data-letter="k">
+            <img src="images/o.png" class="anagram-letter" data-letter="o">
+            <img src="images/t.png" class="anagram-letter" data-letter="t">
         </div>                
+        <!-- Поле ввода ответа -->
         <input type="text" id="answer" placeholder="Введите ответ">
+        <!-- Кнопки для проверки ответа и получения новой анаграммы -->
         <button onclick="checkAnswer()">Проверить</button>
         <button onclick="getNewAnagram()">Новая анаграмма</button>
+        <!-- Сообщение о результате -->
         <p id="message"></p>
     </div>
 
     <!-- Подключаем скрипты -->
     <script src="script.js"></script>
 
+    <!-- Скрипт для отображения первой анаграммы при загрузке страницы -->
     <script>
-        // Добавляем этот скрипт, чтобы отображать первую анаграмму при загрузке страницы
+        // Дожидаемся полной загрузки документа перед выполнением скрипта
         document.addEventListener('DOMContentLoaded', function() {
             displayCurrentAnagram();
         });
